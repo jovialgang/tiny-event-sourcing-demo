@@ -24,14 +24,7 @@ class TaskController(
     @PostMapping("/{taskName}")
     fun createTask(@PathVariable taskName: String, @RequestParam description: String, @RequestParam deadline: String, @RequestParam projectId: String, @RequestParam assigneeId: String, @RequestParam creatorId: String) : TaskeCreatedEvent {
         return taskEsService.create { it.create(UUID.randomUUID(), taskName, description, deadline, projectId, assigneeId, creatorId) }
-        //return projectEsService.create { it.create(UUID.randomUUID(), projectTitle, creatorId) }
     }
-//    taskName = name,
-//    description = taskDescription,
-//    deadline = taskDeadline,
-//    projectId = projectId,
-//    assigneeId = assigneeId,
-//    creatorId = creatorId
 
     @GetMapping("/{taskId}")
     fun getTask(@PathVariable taskId: UUID) : TaskAggregateState? {
