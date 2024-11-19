@@ -30,3 +30,9 @@ fun TaskAggregateState.update(name: String, taskDescription: String, taskDeadlin
         creatorId = creatorId
     )
 }
+
+fun TaskAggregateState.delete(id: UUID): TaskDeletedEvent {
+    return TaskDeletedEvent(
+        taskId = id
+    )
+}

@@ -17,7 +17,6 @@ class TaskAggregateState : AggregateState<UUID, TaskAggregate> {
     lateinit var projectId: String
     lateinit var assigneeId: String
     lateinit var creatorId: String
-    //var projectTags = mutableMapOf<UUID, TagEntity>()
 
     override fun getId() = taskId
 
@@ -42,6 +41,18 @@ class TaskAggregateState : AggregateState<UUID, TaskAggregate> {
         event.projectId?.let { projectId = it }
         event.assigneeId?.let { assigneeId = it }
         event.creatorId?.let { creatorId = it }
+        updatedAt = System.currentTimeMillis()
+    }
+
+    @StateTransitionFunc
+    fun taskDeletedApply(event: TaskDeletedEvent) {
+        taskId = event.taskId
+        name = "Deleted"
+        description = ""
+        deadline = ""
+        projectId = ""
+        assigneeId = ""
+        creatorId = ""
         updatedAt = System.currentTimeMillis()
     }
 }
