@@ -19,7 +19,7 @@ class TaskController(
     val taskEsService: EventSourcingService<UUID, TaskAggregate, TaskAggregateState>
 ) {
 
-    @PostMapping("/{taskName}")
+    @PostMapping("/create/{taskName}")
     fun createTask(@PathVariable taskName: String,
                    @RequestParam description: String,
                    @RequestParam deadline: String,
@@ -34,7 +34,7 @@ class TaskController(
         return taskEsService.getState(taskId)
     }
 
-    @PostMapping("/{taskId}")
+    @PostMapping("/update/{taskId}")
     fun updateTask(@PathVariable taskId: UUID,
                    @RequestParam taskName: String,
                    @RequestParam description: String,

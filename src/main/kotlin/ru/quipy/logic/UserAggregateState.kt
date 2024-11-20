@@ -1,9 +1,9 @@
 package ru.quipy.logic
 
+import java.util.*
 import ru.quipy.api.*
 import ru.quipy.core.annotations.StateTransitionFunc
 import ru.quipy.domain.AggregateState
-import java.util.*
 
 class UserAggregateState : AggregateState<UUID, UserAggregate> {
     private lateinit var userId: UUID
