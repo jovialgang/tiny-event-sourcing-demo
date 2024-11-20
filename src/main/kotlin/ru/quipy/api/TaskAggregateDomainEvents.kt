@@ -25,7 +25,7 @@ class TaskeCreatedEvent(
 )
 
 @DomainEvent(name = TASK_UPDATE_EVENT)
-class TaskUdpatedEvent(
+class TaskUdpateEvent(
     val taskId: UUID,
     val taskName: String,
     val description: String,
