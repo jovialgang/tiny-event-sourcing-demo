@@ -41,7 +41,7 @@ class TaskController(
                    @RequestParam deadline: String,
                    @RequestParam projectId: String,
                    @RequestParam assigneeId: String,
-                   @RequestParam creatorId: String) : TaskUdpateEvent {
+                   @RequestParam creatorId: String) : TaskUdpatedEvent {
         return taskEsService.update(taskId) { it.update(taskName, description, deadline, projectId, assigneeId, creatorId) }
     }
 

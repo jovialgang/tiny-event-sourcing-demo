@@ -19,34 +19,3 @@ class ProjectCreatedEvent(
     name = PROJECT_CREATED_EVENT,
     createdAt = createdAt,
 )
-
-@DomainEvent(name = TASK_CREATED_EVENT)
-class TaskCreatedEvent(
-    val taskId: String,
-    val taskName: String,
-    createdAt: Long = System.currentTimeMillis(),
-) : Event<ProjectAggregate>(
-    name = TASK_CREATED_EVENT,
-    createdAt = createdAt,
-)
-
-@DomainEvent(name = TAG_CREATED_EVENT)
-class TagCreatedEvent(
-    val tagId: String,
-    val tagName: String,
-    createdAt: Long = System.currentTimeMillis(),
-) : Event<ProjectAggregate>(
-    name = TAG_CREATED_EVENT,
-    createdAt = createdAt,
-)
-
-@DomainEvent(name = TAG_ASSIGNED_TO_TASK_EVENT)
-class TagAssignedToTaskEvent(
-    val tagId: String,
-    val tagName: String,
-    val taskId: String,
-    createdAt: Long = System.currentTimeMillis(),
-) : Event<ProjectAggregate>(
-    name = TAG_ASSIGNED_TO_TASK_EVENT,
-    createdAt = createdAt,
-)

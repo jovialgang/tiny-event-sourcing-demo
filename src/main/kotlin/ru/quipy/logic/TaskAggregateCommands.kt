@@ -19,8 +19,8 @@ fun TaskAggregateState.create(id: UUID, name: String, taskDescription: String, t
     )
 }
 
-fun TaskAggregateState.update(name: String, taskDescription: String, taskDeadline: String, projectId: String, assigneeId: String, creatorId: String): TaskUdpateEvent {
-    return TaskUdpateEvent(
+fun TaskAggregateState.update(name: String, taskDescription: String, taskDeadline: String, projectId: String, assigneeId: String, creatorId: String): TaskUdpatedEvent {
+    return TaskUdpatedEvent(
         taskId = this.getId(),
         taskName = name,
         description = taskDescription,

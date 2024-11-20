@@ -14,7 +14,6 @@ import ru.quipy.logic.ProjectAggregateState
 import ru.quipy.logic.TaskAggregateState
 import ru.quipy.logic.UserAggregateState
 import ru.quipy.projections.AnnotationBasedProjectEventsSubscriber
-import ru.quipy.projections.AnnotationBasedTaskEventsSubscriber
 import ru.quipy.projections.AnnotationBasedUserEventsSubscriber
 import ru.quipy.streams.AggregateEventStreamManager
 import ru.quipy.streams.AggregateSubscriptionsManager
@@ -56,9 +55,6 @@ class EventSourcingLibConfiguration {
     private lateinit var userEventSubscriber: AnnotationBasedUserEventsSubscriber
 
     @Autowired
-    private lateinit var taskEventSubscriber: AnnotationBasedTaskEventsSubscriber
-
-    @Autowired
     private lateinit var eventSourcingServiceFactory: EventSourcingServiceFactory
 
     @Autowired
@@ -84,7 +80,6 @@ class EventSourcingLibConfiguration {
 
         subscriptionsManager.subscribe<UserAggregate>(userEventSubscriber)
 
-        subscriptionsManager.subscribe<TaskAggregate>(taskEventSubscriber)
 
         // Event handlers
         eventStreamManager.maintenance {

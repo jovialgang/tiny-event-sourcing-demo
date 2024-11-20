@@ -34,13 +34,13 @@ class TaskAggregateState : AggregateState<UUID, TaskAggregate> {
     }
 
     @StateTransitionFunc
-    fun taskUpdateApply(event: TaskUdpateEvent) {
-        event.taskName.let { name = it }
-        event.description.let { description = it }
-        event.deadline.let { deadline = it }
-        event.projectId.let { projectId = it }
-        event.assigneeId.let { assigneeId = it }
-        event.creatorId.let { creatorId = it }
+    fun taskUpdatedApply(event: TaskUdpatedEvent) {
+        event.taskName?.let { name = it }
+        event.description?.let { description = it }
+        event.deadline?.let { deadline = it }
+        event.projectId?.let { projectId = it }
+        event.assigneeId?.let { assigneeId = it }
+        event.creatorId?.let { creatorId = it }
         updatedAt = System.currentTimeMillis()
     }
 
