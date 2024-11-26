@@ -1,9 +1,9 @@
 package ru.quipy.logic
 
+import java.util.*
 import ru.quipy.api.*
 import ru.quipy.core.annotations.StateTransitionFunc
 import ru.quipy.domain.AggregateState
-import java.util.*
 
 // Service's business logic
 class TaskAggregateState : AggregateState<UUID, TaskAggregate> {
@@ -20,7 +20,6 @@ class TaskAggregateState : AggregateState<UUID, TaskAggregate> {
 
     override fun getId() = taskId
 
-
     @StateTransitionFunc
     fun taskCreatedApply(event: TaskeCreatedEvent) {
         taskId = event.taskId
@@ -35,12 +34,12 @@ class TaskAggregateState : AggregateState<UUID, TaskAggregate> {
 
     @StateTransitionFunc
     fun taskUpdatedApply(event: TaskUdpatedEvent) {
-        event.taskName?.let { name = it }
-        event.description?.let { description = it }
-        event.deadline?.let { deadline = it }
-        event.projectId?.let { projectId = it }
-        event.assigneeId?.let { assigneeId = it }
-        event.creatorId?.let { creatorId = it }
+        event.taskName.let { name = it }
+        event.description.let { description = it }
+        event.deadline.let { deadline = it }
+        event.projectId.let { projectId = it }
+        event.assigneeId.let { assigneeId = it }
+        event.creatorId.let { creatorId = it }
         updatedAt = System.currentTimeMillis()
     }
 

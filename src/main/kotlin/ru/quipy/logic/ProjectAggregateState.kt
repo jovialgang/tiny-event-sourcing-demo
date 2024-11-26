@@ -1,9 +1,9 @@
 package ru.quipy.logic
 
+import java.util.*
 import ru.quipy.api.*
 import ru.quipy.core.annotations.StateTransitionFunc
 import ru.quipy.domain.AggregateState
-import java.util.*
 
 // Service's business logic
 class ProjectAggregateState : AggregateState<UUID, ProjectAggregate> {
