@@ -14,14 +14,14 @@ class TaskAggregateState : AggregateState<UUID, TaskAggregate> {
     lateinit var name: String
     lateinit var description: String
     lateinit var deadline: String
-    lateinit var projectId: String
-    lateinit var assigneeId: String
-    lateinit var creatorId: String
+    lateinit var projectId: UUID
+    lateinit var assigneeId: UUID
+    lateinit var creatorId: UUID
 
     override fun getId() = taskId
 
     @StateTransitionFunc
-    fun taskCreatedApply(event: TaskeCreatedEvent) {
+    fun taskCreatedApply(event: TaskCreatedEvent) {
         taskId = event.taskId
         name = event.taskName
         description = event.description
@@ -33,7 +33,7 @@ class TaskAggregateState : AggregateState<UUID, TaskAggregate> {
     }
 
     @StateTransitionFunc
-    fun taskUpdatedApply(event: TaskUdpatedEvent) {
+    fun taskUpdatedApply(event: TaskUpdatedEvent) {
         event.taskName.let { name = it }
         event.description.let { description = it }
         event.deadline.let { deadline = it }
@@ -49,9 +49,6 @@ class TaskAggregateState : AggregateState<UUID, TaskAggregate> {
         name = "Deleted"
         description = ""
         deadline = ""
-        projectId = ""
-        assigneeId = ""
-        creatorId = ""
         updatedAt = System.currentTimeMillis()
     }
 }

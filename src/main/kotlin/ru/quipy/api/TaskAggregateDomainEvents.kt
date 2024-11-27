@@ -10,14 +10,14 @@ const val TASK_UPDATED_EVENT = "TASK_UPDATED_EVENT"
 
 // API
 @DomainEvent(name = TASKE_CREATED_EVENT)
-class TaskeCreatedEvent(
+class TaskCreatedEvent(
     val taskId: UUID,
     val taskName: String,
     val description: String,
     val deadline: String,
-    val projectId: String,
-    val assigneeId: String,
-    val creatorId: String,
+    val projectId: UUID,
+    val assigneeId: UUID,
+    val creatorId: UUID,
     createdAt: Long = System.currentTimeMillis(),
 ) : Event<TaskAggregate>(
     name = TASKE_CREATED_EVENT,
@@ -25,14 +25,14 @@ class TaskeCreatedEvent(
 )
 
 @DomainEvent(name = TASK_UPDATED_EVENT)
-class TaskUdpatedEvent(
+class TaskUpdatedEvent(
     val taskId: UUID,
     val taskName: String,
     val description: String,
     val deadline: String,
-    val projectId: String,
-    val assigneeId: String,
-    val creatorId: String,
+    val projectId: UUID,
+    val assigneeId: UUID,
+    val creatorId: UUID,
     createdAt: Long = System.currentTimeMillis(),
 ) : Event<TaskAggregate>(
     name = TASK_UPDATED_EVENT,

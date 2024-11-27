@@ -12,40 +12,64 @@ fun TaskAggregateState.create(
         name: String,
         taskDescription: String,
         taskDeadline: String,
-        projectId: String,
-        assigneeId: String,
-        creatorId: String
-): TaskeCreatedEvent {
-    return TaskeCreatedEvent(
-            taskId = id,
-            taskName = name,
-            description = taskDescription,
-            deadline = taskDeadline,
-            projectId = projectId,
-            assigneeId = assigneeId,
-            creatorId = creatorId
-    )
+        projectId: UUID,
+        assigneeId: UUID,
+        creatorId: UUID
+): TaskCreatedEvent {
+        if (name.length > 100) {
+                throw IllegalArgumentException("name is too big")
+        }
+
+        if (taskDescription.length > 500) {
+                throw IllegalArgumentException("description is too big")
+        }
+
+        if (taskDescription.length > 500) {
+                throw IllegalArgumentException("description is too big")
+        }
+
+        return TaskCreatedEvent(
+                taskId = id,
+                taskName = name,
+                description = taskDescription,
+                deadline = taskDeadline,
+                projectId = projectId,
+                assigneeId = assigneeId,
+                creatorId = creatorId
+        )
 }
 
 fun TaskAggregateState.update(
         name: String,
         taskDescription: String,
         taskDeadline: String,
-        projectId: String,
-        assigneeId: String,
-        creatorId: String
-): TaskUdpatedEvent {
-    return TaskUdpatedEvent(
-            taskId = this.getId(),
-            taskName = name,
-            description = taskDescription,
-            deadline = taskDeadline,
-            projectId = projectId,
-            assigneeId = assigneeId,
-            creatorId = creatorId
-    )
+        projectId: UUID,
+        assigneeId: UUID,
+        creatorId: UUID
+): TaskUpdatedEvent {
+        if (name.length > 100) {
+                throw IllegalArgumentException("name is too big")
+        }
+
+        if (taskDescription.length > 500) {
+                throw IllegalArgumentException("description is too big")
+        }
+
+        if (taskDescription.length > 500) {
+                throw IllegalArgumentException("description is too big")
+        }
+
+        return TaskUpdatedEvent(
+                taskId = this.getId(),
+                taskName = name,
+                description = taskDescription,
+                deadline = taskDeadline,
+                projectId = projectId,
+                assigneeId = assigneeId,
+                creatorId = creatorId
+        )
 }
 
 fun TaskAggregateState.delete(id: UUID): TaskDeletedEvent {
-    return TaskDeletedEvent(taskId = id)
+        return TaskDeletedEvent(taskId = id)
 }

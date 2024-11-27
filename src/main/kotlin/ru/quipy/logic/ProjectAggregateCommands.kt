@@ -8,6 +8,10 @@ import ru.quipy.api.ProjectCreatedEvent
 // functions
 
 fun ProjectAggregateState.create(id: UUID, title: String): ProjectCreatedEvent {
+    if (title.length > 100) {
+        throw IllegalArgumentException("project title is too big")
+    }
+
     return ProjectCreatedEvent(
             projectId = id,
             title = title,
